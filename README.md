@@ -123,7 +123,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Yashasvi Khatri - [LinkedIn](https://www.linkedin.com/in/yashasvi-khatri/)
+Yashasvi Khatri - [LinkedIn](https://www.linkedin.com/in/yashasvi-khatri-378231217/)
 
 Project Link: [https://github.com/Yashasvi-Khatri/BusyBuy-2](https://github.com/Yashasvi-Khatri/BusyBuy-2)
 

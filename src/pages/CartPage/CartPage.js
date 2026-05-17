@@ -31,7 +31,7 @@ const CartPage = () => {
 
   useEffect(() => {
     dispatch(fetchCartProducts({ uid: user?.uid }));
-  }, [user]);
+  }, [user, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const purchaseProductsHandler = async () => {
     try {

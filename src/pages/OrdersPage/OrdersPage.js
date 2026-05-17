@@ -55,7 +55,7 @@ const OrdersPage = () => {
 
   useEffect(() => {
     getOrders();
-  }, [user]);
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) {
     return <Loader />;

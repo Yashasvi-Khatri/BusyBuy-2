@@ -1,5 +1,3 @@
-
-
 import React, { useEffect } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
@@ -27,7 +25,7 @@ function App() {
         dispatch(setAuthUser({ user }));
       }
     });
-  }, [dispatch]);
+  }, [dispatch, auth]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="App">

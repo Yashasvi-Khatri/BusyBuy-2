@@ -37,7 +37,7 @@ const LoginPage = () => {
       toast.error(message);
       dispatch(clearError());
     }
-  }, [error, user]);
+  }, [error, user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();

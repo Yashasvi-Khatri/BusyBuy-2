@@ -1,0 +1,21 @@
+# Ignore system files
+.DS_Store
+.Trash/
+Library/
+Applications/
+
+# Ignore editor & extension files
+.vscode/
+.cursor/
+.eclipse-workspace/
+npm-debug.log
+node_modules/
+
+# Ignore Python/ML files if not needed
+*.pyc
+__pycache__/
+
+
+
+
+

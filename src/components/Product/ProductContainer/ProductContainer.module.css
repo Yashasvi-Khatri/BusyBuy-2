@@ -1,14 +1,63 @@
+/* Hallmark · genre: modern-minimal · design-system: design.md · designed-as-app */
+
+:root {
+  --color-paper: oklch(98% 0.008 70);
+  --color-paper-2: oklch(94% 0.012 70);
+  --color-ink: oklch(20% 0.025 45);
+  --color-ink-2: oklch(35% 0.02 45);
+  --color-rule: oklch(85% 0.015 70);
+  --color-accent: oklch(55% 0.12 35);
+  --color-accent-ink: oklch(98% 0.008 70);
+  --color-focus: oklch(55% 0.18 35);
+
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-base: 240ms;
+
+  --radius-card: 8px;
+  --radius-input: 6px;
+}
+
 .productContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 2rem;
-  border-radius: 10px;
-  transition: all 0.25s ease-in-out;
-  box-shadow: rgba(64, 77, 148, 0.4) 0px 2px 8px 0px;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 0;
+  border-radius: var(--radius-card);
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  transition: transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+  box-shadow: 0 1px 3px oklch(0% 0 0 / 0.04);
+  height: 100%;
+  overflow: hidden;
 }
 
 .productContainer:hover {
-  box-shadow: rgba(64, 77, 148, 0.4) 0px 2px 8px 0px;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px oklch(0% 0 0 / 0.12);
+  border-color: var(--color-accent);
+}
+
+.cartItem {
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  height: auto;
+}
+
+.cartItem:hover {
+  transform: none;
+  box-shadow: 0 1px 3px oklch(0% 0 0 / 0.04);
 }

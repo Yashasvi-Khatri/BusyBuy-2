@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./ProductImage.module.css";
 
 // Product Image Component
-const ProductImage = ({ image }) => {
+const ProductImage = ({ image, onCart }) => {
   const [imgError, setImgError] = useState(false);
 
   const handleImageError = () => {
@@ -19,7 +19,7 @@ const ProductImage = ({ image }) => {
   }
 
   return (
-    <div className={styles.imageContainer}>
+    <div className={`${styles.imageContainer} ${onCart ? styles.cartImage : ''}`}>
       <img
         src={image}
         alt="Product"

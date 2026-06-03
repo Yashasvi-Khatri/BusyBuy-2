@@ -1,3 +1,36 @@
+/* Hallmark · genre: modern-minimal · design-system: design.md · designed-as-app */
+
+:root {
+  --color-paper: oklch(98% 0.008 70);
+  --color-paper-2: oklch(94% 0.012 70);
+  --color-ink: oklch(20% 0.025 45);
+  --color-ink-2: oklch(35% 0.02 45);
+  --color-rule: oklch(85% 0.015 70);
+  --color-accent: oklch(55% 0.12 35);
+  --color-accent-ink: oklch(98% 0.008 70);
+  --color-focus: oklch(55% 0.18 35);
+
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+}
+
+.ordersContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+  min-height: calc(100vh - 86px);
+}
+
 .ordersContainer h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-ink);
   text-align: center;
+  margin-bottom: var(--space-xl);
 }

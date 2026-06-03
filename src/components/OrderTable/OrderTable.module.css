@@ -1,36 +1,77 @@
+/* Hallmark · genre: modern-minimal · design-system: design.md · designed-as-app */
+
+:root {
+  --color-paper: oklch(98% 0.008 70);
+  --color-paper-2: oklch(94% 0.012 70);
+  --color-ink: oklch(20% 0.025 45);
+  --color-ink-2: oklch(35% 0.02 45);
+  --color-rule: oklch(85% 0.015 70);
+  --color-accent: oklch(55% 0.12 35);
+  --color-accent-ink: oklch(98% 0.008 70);
+  --color-focus: oklch(55% 0.18 35);
+
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+
+  --radius-card: 8px;
+}
+
 .table {
-  border: none;
-  margin: 4rem auto;
+  border: 1px solid var(--color-rule);
+  margin: var(--space-lg) auto;
   margin-top: 0;
-  position: relative;
-  width: 50%;
+  width: 100%;
+  max-width: 800px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--color-paper);
 }
 
 .table tr {
-  background-color: #d9d9d936;
+  background-color: var(--color-paper);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.table tr:hover {
+  background-color: var(--color-paper-2);
 }
 
 .table tr td,
 thead tr th {
   border: none;
-  padding: 10px;
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
 }
 
-.table tr:nth-last-child() {
-  color: green;
+.table thead tr th {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-ink-2);
+  border-bottom: 2px solid var(--color-rule);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-tr th {
-  border-bottom: 2px solid black !important;
+.table tbody tr td {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-ink);
 }
 
 .totalPrice {
-  border-top: 2px solid white;
-  position: absolute;
-  bottom: -2.5rem;
-  right: 0;
-  width: 100%;
+  border-top: 2px solid var(--color-accent);
+  background-color: var(--color-paper-2);
+  font-weight: 600;
+  color: var(--color-accent);
+  padding: var(--space-md);
   text-align: right;
-  padding-left: 84.85%;
-  margin-top: 10px;
+  font-size: 1.125rem;
 }

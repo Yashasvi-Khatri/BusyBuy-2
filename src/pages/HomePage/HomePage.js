@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./HomePage.module.css";
 import Loader from "../../components/UI/Loader/Loader";
 import ProductList from "../../components/Product/ProductList/ProductList";
@@ -23,6 +23,8 @@ function HomePage() {
     jewelery: false,
     womensClothing: false,
   });
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const filterRef = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -30,6 +32,20 @@ function HomePage() {
   console.log(products);
   const filteredProducts = useSelector(getFilteredProducts);
   const loading = useSelector(getLoadingState);
+
+  // Close filter dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (filterRef.current && !filterRef.current.contains(event.target)) {
+        setIsFilterOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   // Fetch products on app mount
   useEffect(() => {
@@ -49,12 +65,7 @@ function HomePage() {
 
   return (
     <div className={styles.homePageContainer}>
-      <FilterSidebar
-        setPriceRange={setPriceRange}
-        setCategories={setCategories}
-        priceRange={priceRange}
-      />
-      <form className={styles.form}>
+      <div className={styles.searchFilterBar} ref={filterRef}>
         <input
           type="search"
           placeholder="Search By Name"
@@ -62,7 +73,23 @@ function HomePage() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-      </form>
+        <button
+          className={`${styles.filterPill} ${isFilterOpen ? styles.active : ''}`}
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+        >
+          <span className={styles.filterIcon}>⚙</span>
+          Filters
+        </button>
+        {isFilterOpen && (
+          <div className={styles.filterDropdown}>
+            <FilterSidebar
+              setCategories={setCategories}
+              setPriceRange={setPriceRange}
+              priceRange={priceRange}
+            />
+          </div>
+        )}
+      </div>
       {products.length ? (
         <ProductList products={products.length ? filteredProducts : null} />
       ) : null}

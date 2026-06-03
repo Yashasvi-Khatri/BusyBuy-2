@@ -5,7 +5,7 @@ import ProductGrid from "../ProductGrid/ProductGrid";
 const ProductList = ({ products, style, onCart }) => {
   // Component to display the product list
   return (
-    <ProductGrid style={{ ...style }}>
+    <ProductGrid style={{ ...style }} onCart={onCart}>
       {products.map((product, idx) => {
         return <ProductCard product={product} key={idx} onCart={onCart} />;
       })}

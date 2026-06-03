@@ -1,103 +1,138 @@
+/* Hallmark · genre: modern-minimal · design-system: design.md · designed-as-app */
+
 .productDetails {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: flex-start;
-  justify-content: center;
-}
-
-.heading {
-  font-size: 1.15em;
-  padding-bottom: 0.4em;
-  margin-bottom: 0px;
-  color: #224957;
-  font-weight: bold;
+  justify-content: flex-start;
+  padding: var(--space-sm);
+  gap: var(--space-sm);
+  min-width: 0;
 }
 
 .productName {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body);
   font-weight: 500;
-  color: #224957;
-  padding: 8px 0;
-  font-size: 1.25rem;
+  color: var(--color-ink);
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .productName p {
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .productOptions {
   width: 100%;
-  padding: 8px 0;
-  font-size: 24px;
+  padding: 0;
+  font-size: 1.125rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-sm);
+  flex-shrink: 0;
 }
 
 .productOptions p {
-  font-weight: 700;
-  color: #224957;
+  font-weight: 600;
+  color: var(--color-ink);
   margin: 0;
 }
 
 .quantityContainer {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  width: 50%;
+  justify-content: center;
+  gap: 12px;
+  background: var(--color-paper-2);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-input);
+  flex-shrink: 0;
 }
 
-.quantityContainer img {
-  transition: all 0.1s ease-in-out;
-}
-
-.quantityContainer img:hover {
+.quantityContainer button {
+  background: none;
+  border: none;
   cursor: pointer;
-  transform: scale(1.15);
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--dur-fast) var(--ease-out);
+  color: var(--color-ink);
+}
+
+.quantityContainer button:hover {
+  transform: scale(1.1);
+}
+
+.quantityContainer button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 .addBtn {
-  color: #fff;
-  padding: 0.75rem 0;
-  border: 1px solid #7064e5;
-  border-radius: 6px;
-  width: 50%;
-  font-size: 20px;
-  background: #7064e5;
-  transition: all 0.3s ease-in-out;
+  color: var(--color-accent-ink);
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-input);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--color-accent);
+  transition: background-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
   width: 100%;
-}
-
-.removeBtn {
-  color: #fff;
-  padding: 0.75rem 0;
-  border: 1px solid red;
-  border-radius: 6px;
-  width: 50%;
-  font-size: 20px;
-  background: rgb(241, 68, 68);
-  transition: all 0.3s ease-in-out;
-  width: 100%;
+  cursor: pointer;
 }
 
 .addBtn:hover {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  transform: translateY(-1px);
+}
+
+.addBtn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.addBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.removeBtn {
+  color: var(--color-paper);
+  padding: 0.625rem 1rem;
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius-input);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--color-ink);
+  transition: background-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+  width: 100%;
   cursor: pointer;
-  color: #7064e5;
-  background-color: transparent;
-  border: 1px solid #7064e5;
+  white-space: nowrap;
 }
 
 .removeBtn:hover {
-  cursor: pointer;
-  color: rgb(241, 68, 68);
-  background-color: transparent;
-  border: 1px solid rgb(241, 68, 68);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  transform: translateY(-1px);
 }
 
-.editForm {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.removeBtn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }

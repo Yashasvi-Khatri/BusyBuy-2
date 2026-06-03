@@ -4,15 +4,9 @@ import "./Navbar.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../redux/reducers/authReducer";
 import { logout } from "../../redux/reducers/authReducer";
-//Icons..
-import HomeIcon from "../../assets/home.png";
-import OrdersIcon from "../../assets/basket.png";
-import SignIn from "../../assets/Log in.png";
-import Logout from "../../assets/Log Out.png";
-import Cart from "../../assets/cart.png";
 
 const Navbar = () => {
-  const [click] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dispatch = useDispatch();
 
   const user = useSelector(getUser);
@@ -22,121 +16,91 @@ const Navbar = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Function to logout from app
   const onLogoutHandler = () => {
     scrollTop();
-    dispatch(logout()); // inbuilt firebase function to logout
+    dispatch(logout());
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   return (
-    <nav
-      className="navbar"
-      style={{
-        justifyContent: "space-evenly",
-        boxShadow: "rgb(17 17 26 / 5%) 0px 15px 20px",
-      }}
-    >
+    <nav className="navbar" aria-label="Primary navigation">
       <div className="navbar-container">
-        <NavLink to="/" className="navbar-logo" onClick={() => {}}>
+        <NavLink to="/" className="wordmark" onClick={scrollTop}>
           Busy Buy
         </NavLink>
-        <ul
-          className={click ? "nav-menu active" : "nav-menu"}
-          onClick={scrollTop}
-        >
-          <li className="nav-item active">
+
+        <ul className={`nav-links ${mobileMenuOpen ? "nav-links--open" : ""}`}>
+          <li>
             <NavLink
-              activeclassname="active-links"
               to="/"
-              className="nav-links"
-              exact="true"
+              className="nav-link"
+              onClick={() => {
+                scrollTop();
+                setMobileMenuOpen(false);
+              }}
             >
-              <span>
-                <img
-                  className="icon_styles"
-                  src={HomeIcon}
-                  alt="Home"
-                  onClick={scrollTop}
-                />
-              </span>{" "}
               Home
             </NavLink>
           </li>
 
           {isAuthenticated && (
             <>
-              <li className="nav-item active">
+              <li>
                 <NavLink
-                  activeclassname="active-links"
                   to="/myorders"
-                  className="nav-links"
+                  className="nav-link"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  <span>
-                    <img
-                      className="icon_styles"
-                      src={OrdersIcon}
-                      alt="Home"
-                      onClick={scrollTop}
-                    />
-                  </span>{" "}
                   My orders
                 </NavLink>
               </li>
 
-              <li className="nav-item active">
+              <li>
                 <NavLink
-                  activeclassname="active-links"
                   to="/cart"
-                  className="nav-links"
+                  className="nav-link"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  <span>
-                    <img
-                      className="icon_styles"
-                      src={Cart}
-                      alt="Home"
-                      onClick={scrollTop}
-                    />
-                  </span>{" "}
                   Cart
                 </NavLink>
               </li>
             </>
           )}
 
-          <li className="nav-item active">
+          <li>
             {isAuthenticated ? (
-              <NavLink
-                to="/"
-                onClick={onLogoutHandler}
-                activeclassname="active-links"
-                className="nav-links"
+              <button
+                onClick={() => {
+                  onLogoutHandler();
+                  setMobileMenuOpen(false);
+                }}
+                className="nav-link nav-link--button"
               >
-                <span>
-                  <img className="icon_styles" src={Logout} alt="Home" />
-                </span>
                 Logout
-              </NavLink>
+              </button>
             ) : (
-              <>
-                <NavLink
-                  activeclassname="active-links"
-                  to="/signin"
-                  className="nav-links"
-                >
-                  <span>
-                    <img
-                      className="icon_styles"
-                      src={SignIn}
-                      alt="Home"
-                      onClick={scrollTop}
-                    />
-                  </span>
-                  SignIn
-                </NavLink>
-              </>
+              <NavLink
+                to="/signin"
+                className="nav-link nav-link--cta"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Sign in
+              </NavLink>
             )}
           </li>
         </ul>
+
+        <button
+          className="mobile-menu-toggle"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          <span className="hamburger"></span>
+        </button>
       </div>
     </nav>
   );

@@ -10,8 +10,8 @@ const ProductCard = ({
   onCart,
 }) => {
   return (
-    <ProductContainer>
-      <ProductImage image={image} />
+    <ProductContainer onCart={onCart}>
+      <ProductImage image={image} onCart={onCart} />
       <ProductDetails
         title={title}
         price={price}

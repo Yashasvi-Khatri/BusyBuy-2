@@ -1,24 +1,83 @@
 .homePageContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   margin: auto;
+  padding: 2rem 1rem;
+}
+
+.searchFilterBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FAF9F6;
+  border: 1.5px solid #D6CFC4;
+  border-radius: 14px;
+  padding: 6px 6px 6px 16px;
+  max-width: 600px;
+  margin: 0 auto 24px;
+  position: relative;
+  width: 100%;
 }
 
 .searchInput {
-  margin: 1em 0px !important;
-  font-size: 1.2em;
-  color: #7064e5 !important;
-  background: #f4f6f8 !important;
-  border: 1px solid #7064e5;
-  padding: 12px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  font-weight: 400;
-  line-height: 1.5;
+  flex: 1;
+  border: none;
+  background: transparent;
   outline: none;
-  width: 100%;
+  font-size: 15px;
+  color: #1C1C1E;
+  padding: 8px 0;
+}
+
+.searchInput::placeholder {
+  color: #9E9589;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.filterPill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #1C1C1E;
+  color: #FAF9F6;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.filterPill:hover {
+  background: #2C2C2E;
+}
+
+.filterPill.active {
+  background: #3A3A3C;
+}
+
+.filterIcon {
+  font-size: 14px;
+}
+
+.filterDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #FAF9F6;
+  border: 1.5px solid #D6CFC4;
+  border-radius: 14px;
+  padding: 20px;
+  z-index: 100;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
 }
 
 .form {

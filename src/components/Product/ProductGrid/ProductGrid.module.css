@@ -1,6 +1,48 @@
+/* Hallmark · genre: modern-minimal · macrostructure: Long Document
+ * grid: F1 Bento · knobs: tiles=varied, spans=irregular, accent=corner-only
+ * design-system: design.md · designed-as-app
+ */
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin: 3rem 15rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 3rem 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .grid > :nth-child(3n+1) {
+    grid-row: span 2;
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .grid > :nth-child(4n+1) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  max-width: none;
+}
+
+.cartList > :nth-child(n) {
+  grid-row: auto;
+  grid-column: auto;
 }

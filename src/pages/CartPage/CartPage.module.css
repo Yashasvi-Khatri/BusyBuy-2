@@ -1,47 +1,144 @@
+/* Hallmark · genre: modern-minimal · design-system: design.md · designed-as-app */
+
+:root {
+  --color-paper: oklch(98% 0.008 70);
+  --color-paper-2: oklch(94% 0.012 70);
+  --color-ink: oklch(20% 0.025 45);
+  --color-ink-2: oklch(35% 0.02 45);
+  --color-rule: oklch(85% 0.015 70);
+  --color-accent: oklch(55% 0.12 35);
+  --color-accent-ink: oklch(98% 0.008 70);
+  --color-focus: oklch(55% 0.18 35);
+
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-base: 240ms;
+
+  --radius-card: 8px;
+  --radius-input: 6px;
+}
+
 .cartPageContainer {
-  margin: auto;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+  min-height: calc(100vh - 86px);
+  overflow-x: hidden;
+}
+
+.cartPageContainer h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  text-align: center;
+  margin: var(--space-xl) 0;
 }
 
 .totalPrice {
-  position: fixed;
-  left: 0.5rem;
-  top: 30%;
-  background: #f1f1f1;
-  padding: 1.5rem;
+  position: sticky;
+  top: calc(86px + var(--space-md));
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  padding: var(--space-md);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 1rem;
-  margin-right: 2rem;
-  border-radius: 10px;
+  gap: var(--space-md);
+  border-radius: var(--radius-card);
+  box-shadow: 0 2px 8px oklch(0% 0 0 / 0.06);
+  max-width: 280px;
+  margin-bottom: var(--space-md);
 }
 
 .totalPrice p {
-  font-size: 1.15em;
-  color: #224957;
-  font-weight: bold;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0;
+  text-align: center;
 }
 
 .purchaseBtn {
-  color: #fff;
-  border: 1px solid #7064e5;
-  border-radius: 6px;
-  font-size: 20px;
-  background: #7064e5;
-  transition: all 0.3s ease-in-out;
-  margin: auto;
+  color: var(--color-accent-ink);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-input);
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--color-accent);
+  padding: 0.75rem 1.5rem;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+  cursor: pointer;
+  width: 100%;
 }
 
 .purchaseBtn:hover {
-  color: #7064e5;
-  cursor: pointer;
-  background-color: transparent;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  transform: translateY(-1px);
 }
 
-@media screen and (max-width: 768px) {
+.purchaseBtn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.purchaseBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (min-width: 1024px) {
+  .cartPageContainer {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
   .totalPrice {
-    position: inherit;
-    margin: 0.5rem;
+    position: sticky;
+    top: calc(86px + var(--space-md));
+  }
+}
+
+@media (max-width: 768px) {
+  .cartPageContainer {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .totalPrice {
+    position: fixed;
+    bottom: var(--space-md);
+    left: var(--space-sm);
+    right: var(--space-sm);
+    top: auto;
+    max-width: none;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--space-sm);
+    z-index: 5;
+  }
+
+  .totalPrice p {
+    font-size: 1rem;
+  }
+
+  .purchaseBtn {
+    width: auto;
+    padding: 0.625rem 1.25rem;
   }
 }

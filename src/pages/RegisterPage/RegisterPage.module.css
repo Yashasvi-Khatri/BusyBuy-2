@@ -1,50 +1,112 @@
+/* Hallmark · genre: modern-minimal · design-system: design.md · designed-as-app */
+
+:root {
+  --color-paper: oklch(98% 0.008 70);
+  --color-paper-2: oklch(94% 0.012 70);
+  --color-ink: oklch(20% 0.025 45);
+  --color-ink-2: oklch(35% 0.02 45);
+  --color-rule: oklch(85% 0.015 70);
+  --color-accent: oklch(55% 0.12 35);
+  --color-accent-ink: oklch(98% 0.008 70);
+  --color-focus: oklch(55% 0.18 35);
+
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-base: 240ms;
+
+  --radius-card: 8px;
+  --radius-input: 6px;
+}
+
 .formContainer {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 86px);
+  padding: var(--space-xl) var(--space-md);
 }
 
 .loginTitle {
-  color: #224957;
-  font-size: 2.75em;
-  font-weight: 900;
-  text-align: left;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  text-align: center;
+  margin-bottom: var(--space-lg);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  width: 20rem;
-  gap: 1rem;
+  padding: var(--space-xl);
+  width: 100%;
+  max-width: 400px;
+  gap: var(--space-md);
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-card);
+  box-shadow: 0 2px 8px oklch(0% 0 0 / 0.06);
 }
 
 .loginInput {
-  background: #f4f6f8;
-  border: 1px solid #7064e5;
-  border-radius: 10px;
-  box-sizing: border-box;
-  font-size: 1.2em;
-  padding: 12px;
-  color: #7064e5;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-input);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  color: var(--color-ink);
+  transition: border-color var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.loginInput::placeholder {
+  color: var(--color-ink-2);
 }
 
 .loginInput:focus {
-  outline: 1px solid #7064e5;
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px oklch(55% 0.18 35 / 0.2);
 }
 
 .loginBtn {
-  background: #7064e5;
-  border-radius: 10px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
-  font-size: 1.2em !important;
-  padding: 0.4em !important;
-  color: #fff;
+  background: var(--color-accent);
+  border-radius: var(--radius-input);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.875rem 1.5rem;
+  color: var(--color-accent-ink);
   border: none;
   width: 100%;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
 }
 
-.loginBtn:not(:disabled) {
-  cursor: pointer;
+.loginBtn:hover {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  transform: translateY(-1px);
+}
+
+.loginBtn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.loginBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }

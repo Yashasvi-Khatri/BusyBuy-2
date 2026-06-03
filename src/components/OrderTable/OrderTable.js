@@ -28,16 +28,15 @@ const OrderTable = ({ order }) => {
               </tr>
             );
           })}
-          <tr></tr>
+          <tr className={styles.totalPrice}>
+            <td colSpan="4" style={{ textAlign: "right" }}>
+              {/* Display total price of products for that particular order */}
+              {`Total: ₹ ${order.reduce((acc, currentProduct) => {
+                return acc + currentProduct.price * currentProduct.quantity;
+              }, 0)}`}
+            </td>
+          </tr>
         </tbody>
-        <tr className={styles.totalPrice}>
-          <td>
-            {/* Display total price of products for that particular order */}
-            {`₹ ${order.reduce((acc, currentProduct) => {
-              return acc + currentProduct.price * currentProduct.quantity;
-            }, 0)}`}
-          </td>
-        </tr>
       </table>
     </div>
   );

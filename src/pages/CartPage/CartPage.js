@@ -52,24 +52,25 @@ const CartPage = () => {
 
   if (loading) return <Loader />;
 
+  if (!cartProducts?.length) {
+    return <h1>Cart is Empty!</h1>;
+  }
+
   return (
     <div className={styles.cartPageContainer}>
-      {!!cartProducts?.length && (
-        <aside className={styles.totalPrice}>
-          <p>TotalPrice:- ₹{totalPrice}/-</p>
-          <button
-            className={styles.purchaseBtn}
-            onClick={purchaseProductsHandler}
-          >
-            {purchasing ? "Purchasing" : "Purchase"}
-          </button>
-        </aside>
-      )}
-      {!!cartProducts?.length ? (
+      <h1>Your Cart</h1>
+      <div className={styles.cartItems}>
         <ProductList products={cartProducts} onCart />
-      ) : (
-        <h1>Cart is Empty!</h1>
-      )}
+      </div>
+      <aside className={styles.totalPrice}>
+        <p>TotalPrice:- ₹{totalPrice}/-</p>
+        <button
+          className={styles.purchaseBtn}
+          onClick={purchaseProductsHandler}
+        >
+          {purchasing ? "Purchasing" : "Purchase"}
+        </button>
+      </aside>
     </div>
   );
 };
